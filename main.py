@@ -1,16 +1,32 @@
-# This is a sample Python script.
+import pywhatkit as whatsapp
+import pandas
+from datetime import datetime, timedelta
+import webbrowser as web
+from time import sleep
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+AMOUNT = 5
+
+currentDateAndTime = datetime.now()
+currentHour = currentDateAndTime.strftime("%H")
+
+currentMinute = currentDateAndTime
+nextMinute = currentMinute + timedelta(minutes=1)
+nextMinute = nextMinute.strftime("%M")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+print(currentHour, nextMinute)
+
+web.get(using='windows-default')
+#whatsapp.sendwhatmsg_instantly("+004915156030239", "Test", wait_time=45)
+
+phone_no = "+004915156030239"
+message = "Test"
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print("Opening whatsapp")
+web.open("https://web.whatsapp.com")
+print("Wait 5 sec")
+sleep(5)
+print("Sending message")
+web.open(f"https://web.whatsapp.com/send?phone={phone_no}&text={message}")
